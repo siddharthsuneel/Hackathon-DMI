@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "AudioPlayer.h"
 #import "Constants.h"
-
+#import "LightManager.h"
 
 @interface ViewController ()
 {
@@ -74,7 +74,15 @@
 #pragma mark - First Track
 - (IBAction)playFirstMusicButtonClicked:(id)sender {
     self.activeAudioPlayer = self.firstAudioPlayer;
-    [self openMediaLibraryButtonClicked];
+    //[self openMediaLibraryButtonClicked];
+    
+        NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"Not_Afraid" withExtension:@"mp3"];
+        [self.firstAudioPlayer playURL:audioFileURL
+                  withVolume:1.0
+                  enableRate:YES
+                  loopNumber:0
+                        rate:songRate
+         bgView:self.visualizer];
 }
 
 - (IBAction)firstSliderValueChanged:(UISlider *)sender {
@@ -83,13 +91,24 @@
 
 - (IBAction)stopFirstMusicButtonClicked:(id)sender {
     [self.firstAudioPlayer playPause];
+    [self turnoffBulb];
+    
 }
 
 
 #pragma mark - Second Track
 - (IBAction)playSecondMusicButtonClicked:(id)sender {
     self.activeAudioPlayer = self.secondAudioPlayer;
-    [self openMediaLibraryButtonClicked];
+    //[self openMediaLibraryButtonClicked];
+    
+    NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"Animals" withExtension:@"mp3"];
+    [self.secondAudioPlayer playURL:audioFileURL
+                        withVolume:1.0
+                        enableRate:YES
+                        loopNumber:0
+                              rate:songRate
+                            bgView:self.visualizer];
+
 }
 
 - (IBAction)secondSliderValueChanged:(UISlider *)sender {
@@ -98,6 +117,7 @@
 
 - (IBAction)stopSecondMusicButtonClicked:(id)sender {
     [self.secondAudioPlayer playPause];
+    [self turnoffBulb];
 }
 
 
@@ -169,9 +189,9 @@
 
 - (void) updateLight:(NSNotification*)notificationObj
 {
-    NSLog(@"notification value : %@",notificationObj.object);
+    //NSLog(@"notification value : %@",notificationObj.object);
     NSDictionary *userInfo = notificationObj.userInfo;
-    float scaleValue = -1;
+    CGFloat scaleValue = 0.5;
     AudioPlayer *audioPlayer = [userInfo objectForKey:NotificationValue_Player];
     
     if (self.firstAudioPlayer.audioPlayer.volume < self.secondAudioPlayer.audioPlayer.volume) {
@@ -184,9 +204,80 @@
         }
     }
     
-    if (scaleValue >= 0) {
-        NSLog(@"scale value : %f",scaleValue);
+    NSLog(@"scale value : %f",scaleValue);
+    
+    if (scaleValue > 2.0) {
+        scaleValue += scaleValue * 0.9;
+        if (scaleValue >= 5) {
+            scaleValue = 5;
+        }
+    }else {
+        scaleValue -= scaleValue * 0.3;
+        if (scaleValue < 0.4) {
+            scaleValue = 0.0;
+        }
     }
+    
+    NSLog(@"new scale value : %f",scaleValue);
+
+    int r = arc4random() % 255;
+    int g = arc4random() % 255;
+    int b = arc4random() % 255;
+    UIColor *colorObj = [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0];
+    CGPoint point = [LightManager calculateXY:colorObj];
+    
+    PHLightState *newLightState = [[PHLightState alloc] init];
+    newLightState.brightness = [NSNumber numberWithInt:(scaleValue * 50)];
+    newLightState.x = @(point.x);
+    newLightState.y = @(point.y);
+    newLightState.on = (scaleValue <= 0.4)?[NSNumber numberWithBool:false]:[NSNumber numberWithBool:true];
+    
+    static int count = 0;
+    switch (count) {
+        case 0:
+            [self updateLight1:newLightState];
+            break;
+        case 1:
+            [self updateLight2:newLightState];
+            break;
+        case 2:
+            [self updateLight3:newLightState];
+            break;
+        default:
+            [self updateLight1:newLightState];
+            [self updateLight2:newLightState];
+            [self updateLight3:newLightState];
+            break;
+    }
+    
+    count++;
+    if (count > 2) {
+        count = 0;
+    }
+    
+    
 }
 
+- (void) updateLight1:(PHLightState*)lightState {
+    
+    [[LightManager sharedManager] updateLightWithIdentifier:@"1" state:lightState];
+}
+
+- (void) updateLight2:(PHLightState*)lightState {
+    
+    [[LightManager sharedManager] updateLightWithIdentifier:@"2" state:lightState];
+}
+
+- (void) updateLight3:(PHLightState*)lightState {
+    
+    [[LightManager sharedManager] updateLightWithIdentifier:@"3" state:lightState];
+}
+
+- (void) turnoffBulb {
+    PHLightState *newLightState = [[PHLightState alloc] init];
+    newLightState.on = [NSNumber numberWithBool:false];
+    [self updateLight1:newLightState];
+    [self updateLight2:newLightState];
+    [self updateLight3:newLightState];
+}
 @end

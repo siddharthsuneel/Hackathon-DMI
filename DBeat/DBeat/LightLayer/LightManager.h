@@ -15,5 +15,8 @@
 + (instancetype)sharedManager;
 - (void) enableLocalHeartbeat;
 - (void)initialisation;
+- (void) updateLightWithIdentifier:(NSString *)lightId state:(PHLightState*)lightState;
++ (UIColor*) randomColor;
++ (CGPoint)calculateXY:(UIColor *)color;
 
 @end

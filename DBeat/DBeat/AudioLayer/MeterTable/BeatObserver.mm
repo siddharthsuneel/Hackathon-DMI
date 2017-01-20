@@ -45,7 +45,7 @@
 
 - (float) getScale
 {
-    float scale = 0.5;
+    float scale = 0.0;
     if (_audioPlayer.playing )
     {
         [_audioPlayer updateMeters];

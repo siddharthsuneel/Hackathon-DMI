@@ -17,6 +17,7 @@
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
 @property (nonatomic, strong) PHBridgeResourcesCache *bridgeResourcesCache;
 @property (nonatomic, strong) PHNotificationManager *notificationManager;
+@property (nonatomic, strong) PHBridgeSendAPI *bridgeSendAPI;
 @property (nonatomic, strong) HMAccessoryBrowser *accessoryBrowser;
 
 @end
@@ -29,11 +30,13 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
+        [sharedInstance initialisation];
     });
     return sharedInstance;
 }
 
 - (void)initialisation {
+    self.bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
@@ -181,4 +184,70 @@
     }];
 }
 
+#pragma mark - Color Methods
+
++ (UIColor*) randomColor {
+    int r = arc4random() % 255;
+    int g = arc4random() % 255;
+    int b = arc4random() % 255;
+    return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1];
+}
+
++ (CGPoint)calculateXY:(UIColor *)color {
+    CGColorRef cgColor = [color CGColor];
+    
+    const CGFloat *components = CGColorGetComponents(cgColor);
+    long numberOfComponents = CGColorGetNumberOfComponents(cgColor);
+    
+    // Default to white
+    CGFloat red = 1.0f;
+    CGFloat green = 1.0f;
+    CGFloat blue = 1.0f;
+    
+    if (numberOfComponents == 4) {
+        // Full color
+        red = components[0];
+        green = components[1];
+        blue = components[2];
+    }
+    else if (numberOfComponents == 2) {
+        // Greyscale color
+        red = green = blue = components[0];
+    }
+    
+    // Apply gamma correction
+    float r = (red   > 0.04045f) ? pow((red   + 0.055f) / (1.0f + 0.055f), 2.4f) : (red   / 12.92f);
+    float g = (green > 0.04045f) ? pow((green + 0.055f) / (1.0f + 0.055f), 2.4f) : (green / 12.92f);
+    float b = (blue  > 0.04045f) ? pow((blue  + 0.055f) / (1.0f + 0.055f), 2.4f) : (blue  / 12.92f);
+    
+    // Wide gamut conversion D65
+    float X = r * 0.664511f + g * 0.154324f + b * 0.162028f;
+    float Y = r * 0.283881f + g * 0.668433f + b * 0.047685f;
+    float Z = r * 0.000088f + g * 0.072310f + b * 0.986039f;
+    
+    float cx = X / (X + Y + Z);
+    float cy = Y / (X + Y + Z);
+    
+    if (isnan(cx)) {
+        cx = 0.0f;
+    }
+    
+    if (isnan(cy)) {
+        cy = 0.0f;
+    }
+    
+    return CGPointMake(cx, cy);
+}
+
+#pragma mark -Light service calls
+
+- (void) updateLightWithIdentifier:(NSString *)lightId state:(PHLightState*)lightState {
+    [self.bridgeSendAPI updateLightStateForId:lightId withLightState:lightState completionHandler:^(NSArray *errors) {
+        
+        if (errors) {
+            //TODO: show error popup...
+        }
+    }];
+}
+//modelid = LCT001;
 @end

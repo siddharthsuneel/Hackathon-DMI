@@ -12,7 +12,9 @@
 
 
 @interface AudioPlayer : NSObject
-+ (instancetype) sharedManager;
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+
+//+ (instancetype) sharedManager;
 
 - (void)playURL:(NSURL *)url withVolume:(float)vol
      enableRate:(BOOL)rateflag
@@ -21,5 +23,5 @@
          bgView:(VisualizerView *)bgv;
 
 - (void) stop;
-
+- (void) playPause;
 @end

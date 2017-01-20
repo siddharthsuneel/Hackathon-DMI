@@ -19,7 +19,11 @@
 }
 
 @property (strong, nonatomic) VisualizerView *visualizer;
+@property (strong, nonatomic) AudioPlayer *firstAudioPlayer;
+@property (strong, nonatomic) AudioPlayer *secondAudioPlayer;
+@property (strong, nonatomic) AudioPlayer *activeAudioPlayer;
 
+@property (strong, nonatomic) MPMediaPickerController *mediaPicker;
 @end
 
 @implementation ViewController
@@ -29,6 +33,9 @@
     songRate = 1;
     
     [super viewDidLoad];
+    
+    self.firstAudioPlayer = [[AudioPlayer alloc] init];
+    self.secondAudioPlayer = [[AudioPlayer alloc] init];
     
     self.visualizer = [[VisualizerView alloc] initWithFrame:self.view.frame];
     [_visualizer setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
@@ -59,15 +66,41 @@
 //              loopNumber:0
 //                    rate:songRate
 //     bgView:self.visualizer];
-    
     [self openMediaLibraryButtonClicked];
 }
 
-- (IBAction)stopMusicButtonClicked:(id)sender
-{
-    AudioPlayer *audioPlayer = [AudioPlayer sharedManager];
-    [audioPlayer stop];
+
+
+#pragma mark - First Track
+- (IBAction)playFirstMusicButtonClicked:(id)sender {
+    self.activeAudioPlayer = self.firstAudioPlayer;
+    [self openMediaLibraryButtonClicked];
 }
+
+- (IBAction)firstSliderValueChanged:(UISlider *)sender {
+    self.firstAudioPlayer.audioPlayer.volume = [(UISlider*)sender value];
+}
+
+- (IBAction)stopFirstMusicButtonClicked:(id)sender {
+    [self.firstAudioPlayer playPause];
+}
+
+
+#pragma mark - Second Track
+- (IBAction)playSecondMusicButtonClicked:(id)sender {
+    self.activeAudioPlayer = self.secondAudioPlayer;
+    [self openMediaLibraryButtonClicked];
+}
+
+- (IBAction)secondSliderValueChanged:(UISlider *)sender {
+    self.secondAudioPlayer.audioPlayer.volume = [(UISlider*)sender value];
+}
+
+- (IBAction)stopSecondMusicButtonClicked:(id)sender {
+    [self.secondAudioPlayer playPause];
+}
+
+
 
 - (IBAction)sliderValueChanged:(UISlider *)sender
 {
@@ -78,11 +111,13 @@
 
 
 - (void) openMediaLibraryButtonClicked {
-    MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-    [picker setDelegate:self];
-    [picker setAllowsPickingMultipleItems: NO];
-    [self presentViewController:picker animated:YES completion:NULL];
-
+    if (self.mediaPicker == nil) {
+        MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+        [picker setDelegate:self];
+        [picker setAllowsPickingMultipleItems: NO];
+        self.mediaPicker = picker;
+    }
+    [self presentViewController:self.mediaPicker animated:YES completion:NULL];
 }
 
 
@@ -101,13 +136,18 @@
     // but this app only deals with one song at a time)
     MPMediaItem *item = [[collection items] objectAtIndex:0];
     NSString *title = [item valueForProperty:MPMediaItemPropertyTitle];
-    [self setTitle:title];
+    
+    if (self.activeAudioPlayer == self.firstAudioPlayer) {
+        self.firstTrackName.text = title;
+    }else {
+        self.seocndTrackName.text = title;
+    }
     
     // get a URL reference to the selected item
     NSURL *url = [item valueForProperty:MPMediaItemPropertyAssetURL];
     
     // pass the URL to playURL:, defined earlier in this file
-    AudioPlayer *audioPlayer = [AudioPlayer sharedManager];
+    AudioPlayer *audioPlayer = self.activeAudioPlayer;
     
     [audioPlayer playURL:url
               withVolume:1.0

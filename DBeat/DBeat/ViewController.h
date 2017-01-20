@@ -11,7 +11,15 @@
 
 @interface ViewController : UIViewController <MPMediaPickerControllerDelegate>
 
-- (IBAction)playMusicButtonClicked:(id)sender;
-- (IBAction)stopMusicButtonClicked:(id)sender;
+@property (nonatomic, weak) IBOutlet UILabel *firstTrackName;
+@property (nonatomic, weak) IBOutlet UILabel *seocndTrackName;
+
+- (IBAction)playFirstMusicButtonClicked:(id)sender;
+- (IBAction)firstSliderValueChanged:(UISlider *)sender;
+- (IBAction)stopFirstMusicButtonClicked:(id)sender;
+
+- (IBAction)playSecondMusicButtonClicked:(id)sender;
+- (IBAction)secondSliderValueChanged:(UISlider *)sender;
+- (IBAction)stopSecondMusicButtonClicked:(id)sender;
 @end
 

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		733C6C43379BC638C1A5C262 /* libPods-DBeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744D2303A9F514FCA296BF92 /* libPods-DBeat.a */; };
+		A26002911E31F37E0007E2F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26002901E31F37E0007E2F4 /* QuartzCore.framework */; };
+		A26002931E31F3B30007E2F4 /* particleTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = A26002921E31F3B30007E2F4 /* particleTexture.png */; };
+		A26002971E31F4140007E2F4 /* VisualizerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A26002961E31F4140007E2F4 /* VisualizerView.mm */; };
 		EC09A4891E31D86100C659FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4881E31D86100C659FF /* main.m */; };
 		EC09A48C1E31D86100C659FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A48B1E31D86100C659FF /* AppDelegate.m */; };
 		EC09A48F1E31D86100C659FF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A48E1E31D86100C659FF /* ViewController.m */; };
@@ -27,6 +30,10 @@
 /* Begin PBXFileReference section */
 		4A23F2FE19C77293E6C870B9 /* Pods-DBeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBeat.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBeat/Pods-DBeat.release.xcconfig"; sourceTree = "<group>"; };
 		744D2303A9F514FCA296BF92 /* libPods-DBeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBeat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26002901E31F37E0007E2F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A26002921E31F3B30007E2F4 /* particleTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleTexture.png; sourceTree = "<group>"; };
+		A26002951E31F4140007E2F4 /* VisualizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualizerView.h; sourceTree = "<group>"; };
+		A26002961E31F4140007E2F4 /* VisualizerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VisualizerView.mm; sourceTree = "<group>"; };
 		BE4BC9C19E301B156F22BDEA /* Pods-DBeat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBeat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBeat/Pods-DBeat.debug.xcconfig"; sourceTree = "<group>"; };
 		EC09A4841E31D86100C659FF /* DBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC09A4881E31D86100C659FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A26002911E31F37E0007E2F4 /* QuartzCore.framework in Frameworks */,
 				EC09A4A81E31DD9F00C659FF /* HueSDK_iOS.framework in Frameworks */,
 				733C6C43379BC638C1A5C262 /* libPods-DBeat.a in Frameworks */,
 			);
@@ -76,9 +84,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A26002941E31F3F60007E2F4 /* Visualizer */ = {
+			isa = PBXGroup;
+			children = (
+				A26002951E31F4140007E2F4 /* VisualizerView.h */,
+				A26002961E31F4140007E2F4 /* VisualizerView.mm */,
+			);
+			path = Visualizer;
+			sourceTree = "<group>";
+		};
 		B27AD48C812317694710D997 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A26002901E31F37E0007E2F4 /* QuartzCore.framework */,
 				EC09A4A71E31DD9F00C659FF /* HueSDK_iOS.framework */,
 				744D2303A9F514FCA296BF92 /* libPods-DBeat.a */,
 			);
@@ -106,6 +124,7 @@
 		EC09A4861E31D86100C659FF /* DBeat */ = {
 			isa = PBXGroup;
 			children = (
+				A26002941E31F3F60007E2F4 /* Visualizer */,
 				EC09A4AC1E31E18600C659FF /* Utils */,
 				EC09A49E1E31D97D00C659FF /* AudioLayer */,
 				EC09A49F1E31D97D00C659FF /* LightLayer */,
@@ -125,6 +144,7 @@
 		EC09A4871E31D86100C659FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A26002921E31F3B30007E2F4 /* particleTexture.png */,
 				EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */,
 				EC09A4881E31D86100C659FF /* main.m */,
 			);
@@ -235,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC09A4971E31D86100C659FF /* LaunchScreen.storyboard in Resources */,
+				A26002931E31F3B30007E2F4 /* particleTexture.png in Resources */,
 				EC09A4941E31D86100C659FF /* Assets.xcassets in Resources */,
 				EC09A4921E31D86100C659FF /* Main.storyboard in Resources */,
 				EC09A4A41E31DB3400C659FF /* Not_Afraid.mp3 in Resources */,
@@ -302,6 +323,7 @@
 				EC09A4AB1E31E10100C659FF /* LightManager.m in Sources */,
 				EC09A4A21E31DA4000C659FF /* AudioPlayer.m in Sources */,
 				EC09A4B81E31E55900C659FF /* BeatObserver.mm in Sources */,
+				A26002971E31F4140007E2F4 /* VisualizerView.mm in Sources */,
 				EC09A4AF1E31E19600C659FF /* Constants.m in Sources */,
 				EC09A4B31E31E3E100C659FF /* MeterTable.cpp in Sources */,
 				EC09A4BB1E31E6A800C659FF /* UIAlertController+Blocks.m in Sources */,

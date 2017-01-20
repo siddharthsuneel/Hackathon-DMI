@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "VisualizerView.h"
 
 
 @interface AudioPlayer : NSObject
@@ -16,7 +17,8 @@
 - (void)playURL:(NSURL *)url withVolume:(float)vol
      enableRate:(BOOL)rateflag
      loopNumber:(NSInteger)no
-           rate:(float)rateValue;
+           rate:(float)rateValue
+         bgView:(VisualizerView *)bgv;
 
 - (void) stop;
 

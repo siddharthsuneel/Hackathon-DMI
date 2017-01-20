@@ -10,12 +10,16 @@
 #import "AudioPlayer.h"
 #import "Constants.h"
 
+
 @interface ViewController ()
 {
     IBOutlet UISlider *mySlider;
     
     float songRate;
 }
+
+@property (strong, nonatomic) VisualizerView *visualizer;
+
 @end
 
 @implementation ViewController
@@ -25,6 +29,11 @@
     songRate = 0;
     
     [super viewDidLoad];
+    
+    self.visualizer = [[VisualizerView alloc] initWithFrame:self.view.frame];
+    [_visualizer setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [self.view addSubview:_visualizer];
+    [self.view sendSubviewToBack:_visualizer];
     
     [mySlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
 
@@ -48,10 +57,12 @@
               withVolume:1.0
               enableRate:YES
               loopNumber:0
-                    rate:songRate];
+                    rate:songRate
+     bgView:self.visualizer];
 }
 
-- (IBAction)stopMusicButtonClicked:(id)sender {
+- (IBAction)stopMusicButtonClicked:(id)sender
+{
     AudioPlayer *audioPlayer = [AudioPlayer sharedManager];
     [audioPlayer stop];
 }

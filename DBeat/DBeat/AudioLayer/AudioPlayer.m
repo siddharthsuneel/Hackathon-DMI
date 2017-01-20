@@ -94,6 +94,7 @@
                                               enableRate:(BOOL)rateflag
                                                     loopNumber:(NSInteger)no
                                                           rate:(float)rateValue
+                                                    bgView:(VisualizerView *)bgv
 {
     if (_isPlaying) {
         [self playPause]; // Pause the previous audio player

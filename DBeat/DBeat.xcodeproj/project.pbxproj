@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BEBB2321E3227EE0062D5AB /* Animals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBB2311E3227EE0062D5AB /* Animals.mp3 */; };
 		2BEBB2341E324A9D0062D5AB /* Get Low.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBB2331E324A9D0062D5AB /* Get Low.mp3 */; };
 		2BEBB2361E324EE40062D5AB /* Dangerous.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBB2351E324EE40062D5AB /* Dangerous.mp3 */; };
 		733C6C43379BC638C1A5C262 /* libPods-DBeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744D2303A9F514FCA296BF92 /* libPods-DBeat.a */; };
@@ -21,7 +20,6 @@
 		EC09A4941E31D86100C659FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4931E31D86100C659FF /* Assets.xcassets */; };
 		EC09A4971E31D86100C659FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4951E31D86100C659FF /* LaunchScreen.storyboard */; };
 		EC09A4A21E31DA4000C659FF /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4A11E31DA4000C659FF /* AudioPlayer.m */; };
-		EC09A4A41E31DB3400C659FF /* Not_Afraid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */; };
 		EC09A4A81E31DD9F00C659FF /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC09A4A71E31DD9F00C659FF /* HueSDK_iOS.framework */; };
 		EC09A4AB1E31E10100C659FF /* LightManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4AA1E31E10100C659FF /* LightManager.m */; };
 		EC09A4AF1E31E19600C659FF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4AE1E31E19600C659FF /* Constants.m */; };
@@ -31,7 +29,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2BEBB2311E3227EE0062D5AB /* Animals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Animals.mp3; sourceTree = "<group>"; };
 		2BEBB2331E324A9D0062D5AB /* Get Low.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Get Low.mp3"; sourceTree = "<group>"; };
 		2BEBB2351E324EE40062D5AB /* Dangerous.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Dangerous.mp3; sourceTree = "<group>"; };
 		4A23F2FE19C77293E6C870B9 /* Pods-DBeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBeat.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBeat/Pods-DBeat.release.xcconfig"; sourceTree = "<group>"; };
@@ -53,7 +50,6 @@
 		EC09A4981E31D86100C659FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC09A4A01E31DA4000C659FF /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		EC09A4A11E31DA4000C659FF /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
-		EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Not_Afraid.mp3; sourceTree = "<group>"; };
 		EC09A4A71E31DD9F00C659FF /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HueSDK_iOS.framework; path = DBeat/HueSDK_iOS.framework; sourceTree = "<group>"; };
 		EC09A4A91E31E10100C659FF /* LightManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightManager.h; sourceTree = "<group>"; };
 		EC09A4AA1E31E10100C659FF /* LightManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightManager.m; sourceTree = "<group>"; };
@@ -152,9 +148,7 @@
 			children = (
 				A26002921E31F3B30007E2F4 /* particleTexture.png */,
 				2BEBB2351E324EE40062D5AB /* Dangerous.mp3 */,
-				EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */,
 				2BEBB2331E324A9D0062D5AB /* Get Low.mp3 */,
-				2BEBB2311E3227EE0062D5AB /* Animals.mp3 */,
 				EC09A4881E31D86100C659FF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -265,12 +259,10 @@
 			files = (
 				EC09A4971E31D86100C659FF /* LaunchScreen.storyboard in Resources */,
 				A26002931E31F3B30007E2F4 /* particleTexture.png in Resources */,
-				2BEBB2321E3227EE0062D5AB /* Animals.mp3 in Resources */,
 				2BEBB2361E324EE40062D5AB /* Dangerous.mp3 in Resources */,
 				EC09A4941E31D86100C659FF /* Assets.xcassets in Resources */,
 				EC09A4921E31D86100C659FF /* Main.storyboard in Resources */,
 				2BEBB2341E324A9D0062D5AB /* Get Low.mp3 in Resources */,
-				EC09A4A41E31DB3400C659FF /* Not_Afraid.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

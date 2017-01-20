@@ -12,4 +12,7 @@
 
 @interface AudioPlayer : NSObject
 + (instancetype) sharedManager;
+
+- (void) playURL:(NSURL *)url;
+- (void) stop;
 @end

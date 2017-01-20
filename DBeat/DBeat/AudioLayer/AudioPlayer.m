@@ -66,6 +66,12 @@
     _isPlaying = !_isPlaying;
 }
 
+
+- (void) stop {
+    [_audioPlayer stop];
+}
+
+
 - (void)playURL:(NSURL *)url {
     if (_isPlaying) {
         [self playPause]; // Pause the previous audio player
@@ -75,10 +81,63 @@
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     [_audioPlayer setNumberOfLoops:-1];
     [_audioPlayer setMeteringEnabled:YES];
-//    [_visualizer setAudioPlayer:_audioPlayer];
     
     [self playPause];   // Play
 }
 
 
+
+#pragma mark - Media Picker Delegate
+
+/*
+ * This method is called when the user chooses something from the media picker screen. It dismisses the media picker screen
+ * and plays the selected song.
+ */
+//- (void)mediaPicker:(MPMediaPickerController *) mediaPicker didPickMediaItems:(MPMediaItemCollection *) collection {
+//    
+//    // remove the media picker screen
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+//    
+//    // grab the first selection (media picker is capable of returning more than one selected item,
+//    // but this app only deals with one song at a time)
+//    MPMediaItem *item = [[collection items] objectAtIndex:0];
+//    NSString *title = [item valueForProperty:MPMediaItemPropertyTitle];
+//    [_navBar.topItem setTitle:title];
+//    
+//    // get a URL reference to the selected item
+//    NSURL *url = [item valueForProperty:MPMediaItemPropertyAssetURL];
+//    
+//    // pass the URL to playURL:, defined earlier in this file
+//    [self playURL:url];
+//}
+
+/*
+ * This method is called when the user cancels out of the media picker. It just dismisses the media picker screen.
+ */
+//- (void)mediaPickerDidCancel:(MPMediaPickerController *) mediaPicker {
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+//}
+
+//- (void)configureAudioPlayer {
+//    NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"Not_Afraid" withExtension:@"mp3"];
+//    NSError *error;
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioFileURL error:&error];
+//    if (error) {
+//        NSLog(@"%@", [error localizedDescription]);
+//    }
+//    [_audioPlayer setNumberOfLoops:-1];
+//    [_audioPlayer setMeteringEnabled:YES];
+//    [_visualizer setAudioPlayer:_audioPlayer];
+//}
+
+
+
+- (void)configureAudioSession {
+    NSError *error;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    
+    if (error) {
+        NSLog(@"Error setting category: %@", [error description]);
+    }
+}
 @end

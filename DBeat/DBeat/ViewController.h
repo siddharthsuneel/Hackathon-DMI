@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
-
+- (IBAction)playMusicButtonClicked:(id)sender;
+- (IBAction)stopMusicButtonClicked:(id)sender;
 @end
 

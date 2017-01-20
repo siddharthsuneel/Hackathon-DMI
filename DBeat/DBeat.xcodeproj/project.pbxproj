@@ -17,6 +17,7 @@
 		EC09A4A21E31DA4000C659FF /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4A11E31DA4000C659FF /* AudioPlayer.m */; };
 		EC09A4A41E31DB3400C659FF /* Not_Afraid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */; };
 		EC09A4A81E31DD9F00C659FF /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC09A4A71E31DD9F00C659FF /* HueSDK_iOS.framework */; };
+		EC09A4AB1E31E10100C659FF /* LightManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4AA1E31E10100C659FF /* LightManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		EC09A4A11E31DA4000C659FF /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Not_Afraid.mp3; sourceTree = "<group>"; };
 		EC09A4A71E31DD9F00C659FF /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HueSDK_iOS.framework; path = DBeat/HueSDK_iOS.framework; sourceTree = "<group>"; };
+		EC09A4A91E31E10100C659FF /* LightManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightManager.h; sourceTree = "<group>"; };
+		EC09A4AA1E31E10100C659FF /* LightManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 		EC09A49F1E31D97D00C659FF /* LightLayer */ = {
 			isa = PBXGroup;
 			children = (
+				EC09A4A91E31E10100C659FF /* LightManager.h */,
+				EC09A4AA1E31E10100C659FF /* LightManager.m */,
 			);
 			path = LightLayer;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				EC09A48F1E31D86100C659FF /* ViewController.m in Sources */,
 				EC09A48C1E31D86100C659FF /* AppDelegate.m in Sources */,
 				EC09A4891E31D86100C659FF /* main.m in Sources */,
+				EC09A4AB1E31E10100C659FF /* LightManager.m in Sources */,
 				EC09A4A21E31DA4000C659FF /* AudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

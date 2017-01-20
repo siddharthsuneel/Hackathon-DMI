@@ -7,6 +7,11 @@
 //
 
 #import "AudioPlayer.h"
+#import "Constants.h"
+#import "BeatObserver.h"
+
+
+#define kTimerInterval 0.1
 
 
 @interface AudioPlayer ()
@@ -16,6 +21,7 @@
 @implementation AudioPlayer
 {
     BOOL _isPlaying;
+    NSTimer *_timerObj;
 }
 
 #pragma mark - Singleton
@@ -48,27 +54,38 @@
 
 #pragma mark - Public Method
 
+- (void) startTimer {
+    [self stopTimer];
+    
+    _timerObj = [NSTimer scheduledTimerWithTimeInterval:kTimerInterval target:self selector:@selector(updateBeats) userInfo:nil repeats:YES];
+}
+
+- (void) stopTimer {
+    if ([_timerObj isValid]) {
+        [_timerObj invalidate];
+        _timerObj = nil;
+    }
+}
+
 #pragma mark - Music control
 
 - (void)playPause {
     if (_isPlaying) {
         // Pause audio here
         [_audioPlayer pause];
-        
-//        [_toolBar setItems:_playItems];  // toggle play/pause button
     }
     else {
         // Play audio here
         [_audioPlayer play];
-        
-//        [_toolBar setItems:_pauseItems]; // toggle play/pause button
     }
     _isPlaying = !_isPlaying;
+    [self startTimer];
 }
 
 
 - (void) stop {
     [_audioPlayer stop];
+    [self stopTimer];
 }
 
 
@@ -81,6 +98,8 @@
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     [_audioPlayer setNumberOfLoops:-1];
     [_audioPlayer setMeteringEnabled:YES];
+    
+    [[BeatObserver sharedManager] setAudioPlayer:self.audioPlayer];
     
     [self playPause];   // Play
 }
@@ -140,4 +159,18 @@
         NSLog(@"Error setting category: %@", [error description]);
     }
 }
+
+
+- (void) updateBeats {
+    float scale = [[BeatObserver sharedManager] getScale];
+    [self postNotification:scale];
+}
+
+
+#pragma mark - Notification
+
+- (void) postNotification:(float)scale {
+    [[NSNotificationCenter defaultCenter] postNotificationName:AudioBeatNotificationKey object:@(scale) userInfo:nil];
+}
+
 @end

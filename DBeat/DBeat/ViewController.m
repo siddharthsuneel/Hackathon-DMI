@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AudioPlayer.h"
-
+#import "Constants.h"
 
 @interface ViewController ()
 
@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLight:) name:AudioBeatNotificationKey object:nil];
 }
 
 
@@ -37,5 +39,11 @@
 - (IBAction)stopMusicButtonClicked:(id)sender {
     AudioPlayer *audioPlayer = [AudioPlayer sharedManager];
     [audioPlayer stop];
+}
+
+
+#pragma mark - observer
+- (void) updateLight:(NSNotification*)notificationObj {
+    NSLog(@"notification value : %@",notificationObj.object);
 }
 @end

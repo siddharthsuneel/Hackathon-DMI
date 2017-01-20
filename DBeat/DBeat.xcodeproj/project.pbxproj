@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		733C6C43379BC638C1A5C262 /* libPods-DBeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744D2303A9F514FCA296BF92 /* libPods-DBeat.a */; };
 		EC09A4891E31D86100C659FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4881E31D86100C659FF /* main.m */; };
 		EC09A48C1E31D86100C659FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A48B1E31D86100C659FF /* AppDelegate.m */; };
 		EC09A48F1E31D86100C659FF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A48E1E31D86100C659FF /* ViewController.m */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A23F2FE19C77293E6C870B9 /* Pods-DBeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBeat.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBeat/Pods-DBeat.release.xcconfig"; sourceTree = "<group>"; };
+		744D2303A9F514FCA296BF92 /* libPods-DBeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBeat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4BC9C19E301B156F22BDEA /* Pods-DBeat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBeat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBeat/Pods-DBeat.debug.xcconfig"; sourceTree = "<group>"; };
 		EC09A4841E31D86100C659FF /* DBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC09A4881E31D86100C659FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC09A48A1E31D86100C659FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				733C6C43379BC638C1A5C262 /* libPods-DBeat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		885424EEAEF718C66513D91F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE4BC9C19E301B156F22BDEA /* Pods-DBeat.debug.xcconfig */,
+				4A23F2FE19C77293E6C870B9 /* Pods-DBeat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B27AD48C812317694710D997 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				744D2303A9F514FCA296BF92 /* libPods-DBeat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC09A47B1E31D86100C659FF = {
 			isa = PBXGroup;
 			children = (
 				EC09A4861E31D86100C659FF /* DBeat */,
 				EC09A4851E31D86100C659FF /* Products */,
+				885424EEAEF718C66513D91F /* Pods */,
+				B27AD48C812317694710D997 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC09A49B1E31D86100C659FF /* Build configuration list for PBXNativeTarget "DBeat" */;
 			buildPhases = (
+				ADDDB855FAC3180F1D90858C /* [CP] Check Pods Manifest.lock */,
 				EC09A4801E31D86100C659FF /* Sources */,
 				EC09A4811E31D86100C659FF /* Frameworks */,
 				EC09A4821E31D86100C659FF /* Resources */,
+				E610FBBD9C4E356258AD0C88 /* [CP] Embed Pods Frameworks */,
+				4D77FC204EE4CDFF601DAE94 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,6 +171,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D77FC204EE4CDFF601DAE94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBeat/Pods-DBeat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADDDB855FAC3180F1D90858C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E610FBBD9C4E356258AD0C88 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBeat/Pods-DBeat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC09A4801E31D86100C659FF /* Sources */ = {
@@ -268,6 +343,7 @@
 		};
 		EC09A49C1E31D86100C659FF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE4BC9C19E301B156F22BDEA /* Pods-DBeat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DBeat/Info.plist;
@@ -279,6 +355,7 @@
 		};
 		EC09A49D1E31D86100C659FF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A23F2FE19C77293E6C870B9 /* Pods-DBeat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DBeat/Info.plist;
@@ -307,6 +384,7 @@
 				EC09A49D1E31D86100C659FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

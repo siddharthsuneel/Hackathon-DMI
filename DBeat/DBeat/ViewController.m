@@ -11,14 +11,17 @@
 
 
 @interface ViewController ()
-
+{
+    IBOutlet UISlider *mySlider;
+}
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [mySlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 
@@ -38,4 +41,10 @@
     AudioPlayer *audioPlayer = [AudioPlayer sharedManager];
     [audioPlayer stop];
 }
+
+- (IBAction)sliderValueChanged:(UISlider *)sender
+{
+    NSLog(@"slider value = %f", sender.value);
+}
+
 @end

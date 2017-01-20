@@ -19,6 +19,7 @@
 }
 
 #pragma mark - Singleton
+
 + (instancetype)sharedManager {
     static AudioPlayer *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -72,14 +73,31 @@
 }
 
 
-- (void)playURL:(NSURL *)url {
+- (void)playURL:(NSURL *)url withVolume:(float)vol
+                                              enableRate:(BOOL)rateflag
+                                                    loopNumber:(NSInteger)no
+                                                          rate:(float)rateValue
+{
     if (_isPlaying) {
         [self playPause]; // Pause the previous audio player
     }
     
     // Add audioPlayer configurations here
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-    [_audioPlayer setNumberOfLoops:-1];
+    
+    self.audioPlayer.volume = vol;
+    self.audioPlayer.enableRate = rateflag;
+    self.audioPlayer.rate = rateValue;
+    
+    if(no > 0)
+    {
+        [_audioPlayer setNumberOfLoops:no];
+    }
+    else
+    {
+        [_audioPlayer setNumberOfLoops:0];
+    }
+    
     [_audioPlayer setMeteringEnabled:YES];
     
     [self playPause];   // Play

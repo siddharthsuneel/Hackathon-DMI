@@ -13,6 +13,11 @@
 @interface AudioPlayer : NSObject
 + (instancetype) sharedManager;
 
-- (void) playURL:(NSURL *)url;
+- (void)playURL:(NSURL *)url withVolume:(float)vol
+     enableRate:(BOOL)rateflag
+     loopNumber:(NSInteger)no
+           rate:(float)rateValue;
+
 - (void) stop;
+
 @end

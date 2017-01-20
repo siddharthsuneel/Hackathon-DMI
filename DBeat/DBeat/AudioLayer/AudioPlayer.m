@@ -122,6 +122,8 @@
     [[BeatObserver sharedManager] setAudioPlayer:self.audioPlayer];
     
     [self playPause];
+    
+    [bgv setAudioPlayer:_audioPlayer];
 }
 
 

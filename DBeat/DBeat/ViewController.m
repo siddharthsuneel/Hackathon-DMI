@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad
 {
-    songRate = 0;
+    songRate = mySlider.value;
     
     [super viewDidLoad];
     

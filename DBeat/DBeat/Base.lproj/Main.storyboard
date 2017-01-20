@@ -25,7 +25,10 @@
                                     <constraint firstAttribute="width" constant="100" id="DxK-jj-dH5"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="UlF-gf-NWC"/>
                                 </constraints>
-                                <state key="normal" title="Play Music"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <state key="normal" title="Play Music">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="playMusicButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="37Y-K4-5ZQ"/>
                                 </connections>
@@ -35,7 +38,10 @@
                                     <constraint firstAttribute="width" constant="100" id="K66-aI-PJE"/>
                                     <constraint firstAttribute="height" constant="50" id="edL-Lp-oj0"/>
                                 </constraints>
-                                <state key="normal" title="Stop Music"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <state key="normal" title="Stop Music">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="stopMusicButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YgB-Nk-Ofj"/>
                                 </connections>
@@ -47,12 +53,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Tempo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsx-79-lGt">
                                 <frame key="frameInset" minX="139" minY="455" width="97" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fgm-iL-nFc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bZ5-q2-mgl"/>
                             <constraint firstItem="kSP-7P-WjJ" firstAttribute="top" secondItem="fgm-iL-nFc" secondAttribute="bottom" constant="23" id="cEJ-FS-a0d"/>

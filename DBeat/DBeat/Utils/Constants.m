@@ -10,6 +10,8 @@
 
 NSString *const AudioBeatNotificationKey = @"AudioBeatNotificationKey";
 
+NSString *const NotificationValue_Scale = @"NotificationValue_Scale";
+NSString *const NotificationValue_Player = @"NotificationValue_Player";
 
 @implementation Constants
 

@@ -104,7 +104,7 @@
 
 - (IBAction)sliderValueChanged:(UISlider *)sender
 {
-    songRate = sender.value;
+    //songRate = sender.value;
     
     NSLog(@"slider value = %f", sender.value);
 }
@@ -170,6 +170,23 @@
 - (void) updateLight:(NSNotification*)notificationObj
 {
     NSLog(@"notification value : %@",notificationObj.object);
+    NSDictionary *userInfo = notificationObj.userInfo;
+    float scaleValue = -1;
+    AudioPlayer *audioPlayer = [userInfo objectForKey:NotificationValue_Player];
+    
+    if (self.firstAudioPlayer.audioPlayer.volume < self.secondAudioPlayer.audioPlayer.volume) {
+        if (audioPlayer == self.secondAudioPlayer) {
+            scaleValue = [[userInfo objectForKey:NotificationValue_Scale] floatValue];
+        }
+    }else {
+        if (audioPlayer == self.firstAudioPlayer) {
+            scaleValue = [[userInfo objectForKey:NotificationValue_Scale] floatValue];
+        }
+    }
+    
+    if (scaleValue >= 0) {
+        NSLog(@"scale value : %f",scaleValue);
+    }
 }
 
 @end

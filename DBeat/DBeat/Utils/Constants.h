@@ -10,6 +10,9 @@
 
 extern NSString *const AudioBeatNotificationKey;
 
+extern NSString *const NotificationValue_Scale;
+extern NSString *const NotificationValue_Player;
+
 @interface Constants : NSObject
 
 @end

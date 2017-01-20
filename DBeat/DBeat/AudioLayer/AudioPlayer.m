@@ -74,13 +74,15 @@
     if (_isPlaying) {
         // Pause audio here
         [_audioPlayer pause];
+        [self stopTimer];
     }
     else {
         // Play audio here
         [_audioPlayer play];
+        [self startTimer];
     }
     _isPlaying = !_isPlaying;
-    [self startTimer];
+    
 }
 
 
@@ -150,7 +152,8 @@
 #pragma mark - Notification
 
 - (void) postNotification:(float)scale {
-    [[NSNotificationCenter defaultCenter] postNotificationName:AudioBeatNotificationKey object:@(scale) userInfo:nil];
+    NSDictionary *dicObj = @{NotificationValue_Scale:@(scale),NotificationValue_Player:self};    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AudioBeatNotificationKey object:@(scale) userInfo:dicObj];
 }
 
 @end

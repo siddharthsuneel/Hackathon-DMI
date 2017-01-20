@@ -82,6 +82,8 @@
 		EC09A4861E31D86100C659FF /* DBeat */ = {
 			isa = PBXGroup;
 			children = (
+				EC09A49E1E31D97D00C659FF /* AudioLayer */,
+				EC09A49F1E31D97D00C659FF /* LightLayer */,
 				EC09A48A1E31D86100C659FF /* AppDelegate.h */,
 				EC09A48B1E31D86100C659FF /* AppDelegate.m */,
 				EC09A48D1E31D86100C659FF /* ViewController.h */,
@@ -101,6 +103,20 @@
 				EC09A4881E31D86100C659FF /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC09A49E1E31D97D00C659FF /* AudioLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AudioLayer;
+			sourceTree = "<group>";
+		};
+		EC09A49F1E31D97D00C659FF /* LightLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LightLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

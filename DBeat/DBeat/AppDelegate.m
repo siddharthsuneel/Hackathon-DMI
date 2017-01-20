@@ -56,6 +56,7 @@
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
     self.lightManager = [LightManager sharedManager];
+    [self.lightManager initialisation];
 }
 
 

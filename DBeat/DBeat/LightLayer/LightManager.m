@@ -9,7 +9,7 @@
 #import "LightManager.h"
 #import "UIAlertController+Blocks.h"
 
-@interface LightManager()
+@interface LightManager()<HMAccessoryBrowserDelegate,HMHomeManagerDelegate, HMHomeDelegate, HMAccessoryDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *bridgesFoundDict;
 
@@ -17,6 +17,7 @@
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
 @property (nonatomic, strong) PHBridgeResourcesCache *bridgeResourcesCache;
 @property (nonatomic, strong) PHNotificationManager *notificationManager;
+@property (nonatomic, strong) HMAccessoryBrowser *accessoryBrowser;
 
 @end
 
@@ -28,14 +29,19 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
-        [sharedInstance initialisation];
     });
     return sharedInstance;
 }
 
 - (void)initialisation {
+    self.phHueSDK = [[PHHueSDK alloc] init];
+    [self.phHueSDK startUpSDK];
+    [self.phHueSDK enableLogging:YES];
+    [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(loadConnectedBridgeValues) userInfo:nil repeats:YES];
     [self enableLocalHeartbeat];
     [self registerPHHueSDKNotifications];
+    self.accessoryBrowser = [[HMAccessoryBrowser alloc] init];
+    self.accessoryBrowser.delegate = self;
 }
 
 - (void) registerPHHueSDKNotifications {

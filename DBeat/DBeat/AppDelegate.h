@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import <HueSDK_iOS/HueSDK.h>
+@import HomeKit;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

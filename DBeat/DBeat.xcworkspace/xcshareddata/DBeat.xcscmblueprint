@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "537E9F8E10A4433D6B0F6A33C649BDDB03A5E6FA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3B9031A03D04B5095C176CDAD8E76876BBA265EA" : 9223372036854775807,
+    "537E9F8E10A4433D6B0F6A33C649BDDB03A5E6FA" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4BDFC219-D239-4FB6-8C2C-81DBE9BAC0D7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3B9031A03D04B5095C176CDAD8E76876BBA265EA" : "HomeKitDemoApp\/",
+    "537E9F8E10A4433D6B0F6A33C649BDDB03A5E6FA" : "Hackathon-DMI\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DBeat",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DBeat\/DBeat.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/siddharthsuneel\/HomeKitDemoApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B9031A03D04B5095C176CDAD8E76876BBA265EA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/siddharthsuneel\/Hackathon-DMI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "537E9F8E10A4433D6B0F6A33C649BDDB03A5E6FA"
+    }
+  ]
+}

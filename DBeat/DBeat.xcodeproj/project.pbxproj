@@ -14,6 +14,8 @@
 		EC09A4921E31D86100C659FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4901E31D86100C659FF /* Main.storyboard */; };
 		EC09A4941E31D86100C659FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4931E31D86100C659FF /* Assets.xcassets */; };
 		EC09A4971E31D86100C659FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4951E31D86100C659FF /* LaunchScreen.storyboard */; };
+		EC09A4A21E31DA4000C659FF /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC09A4A11E31DA4000C659FF /* AudioPlayer.m */; };
+		EC09A4A41E31DB3400C659FF /* Not_Afraid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,9 @@
 		EC09A4931E31D86100C659FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC09A4961E31D86100C659FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC09A4981E31D86100C659FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC09A4A01E31DA4000C659FF /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		EC09A4A11E31DA4000C659FF /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Not_Afraid.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +105,7 @@
 		EC09A4871E31D86100C659FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */,
 				EC09A4881E31D86100C659FF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -108,6 +114,8 @@
 		EC09A49E1E31D97D00C659FF /* AudioLayer */ = {
 			isa = PBXGroup;
 			children = (
+				EC09A4A01E31DA4000C659FF /* AudioPlayer.h */,
+				EC09A4A11E31DA4000C659FF /* AudioPlayer.m */,
 			);
 			path = AudioLayer;
 			sourceTree = "<group>";
@@ -183,6 +191,7 @@
 				EC09A4971E31D86100C659FF /* LaunchScreen.storyboard in Resources */,
 				EC09A4941E31D86100C659FF /* Assets.xcassets in Resources */,
 				EC09A4921E31D86100C659FF /* Main.storyboard in Resources */,
+				EC09A4A41E31DB3400C659FF /* Not_Afraid.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +253,7 @@
 				EC09A48F1E31D86100C659FF /* ViewController.m in Sources */,
 				EC09A48C1E31D86100C659FF /* AppDelegate.m in Sources */,
 				EC09A4891E31D86100C659FF /* main.m in Sources */,
+				EC09A4A21E31DA4000C659FF /* AudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

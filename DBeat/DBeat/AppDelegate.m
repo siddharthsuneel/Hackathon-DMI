@@ -7,10 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import <HueSDK_iOS/HueSDK.h>
+#import "LightManager.h"
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
+@property (nonatomic, strong) LightManager *lightManager;
 @end
 
 @implementation AppDelegate
@@ -18,8 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
+    [self initializePHHueSDK];
     return YES;
 }
 
@@ -48,6 +49,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) initializePHHueSDK {
+    self.phHueSDK = [[PHHueSDK alloc] init];
+    [self.phHueSDK startUpSDK];
+    [self.phHueSDK enableLogging:YES];
+    self.lightManager = [LightManager sharedManager];
 }
 
 

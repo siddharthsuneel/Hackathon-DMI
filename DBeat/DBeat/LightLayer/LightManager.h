@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <HueSDK_iOS/HueSDK.h>
 
 @interface LightManager : NSObject
+
++ (instancetype)sharedManager;
+- (void) enableLocalHeartbeat;
 
 @end

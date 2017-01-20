@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2BEBB2321E3227EE0062D5AB /* Animals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBB2311E3227EE0062D5AB /* Animals.mp3 */; };
+		2BEBB2341E324A9D0062D5AB /* Get Low.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBB2331E324A9D0062D5AB /* Get Low.mp3 */; };
+		2BEBB2361E324EE40062D5AB /* Dangerous.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BEBB2351E324EE40062D5AB /* Dangerous.mp3 */; };
 		733C6C43379BC638C1A5C262 /* libPods-DBeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744D2303A9F514FCA296BF92 /* libPods-DBeat.a */; };
 		A26002911E31F37E0007E2F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26002901E31F37E0007E2F4 /* QuartzCore.framework */; };
 		A26002931E31F3B30007E2F4 /* particleTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = A26002921E31F3B30007E2F4 /* particleTexture.png */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		2BEBB2311E3227EE0062D5AB /* Animals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Animals.mp3; sourceTree = "<group>"; };
+		2BEBB2331E324A9D0062D5AB /* Get Low.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Get Low.mp3"; sourceTree = "<group>"; };
+		2BEBB2351E324EE40062D5AB /* Dangerous.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Dangerous.mp3; sourceTree = "<group>"; };
 		4A23F2FE19C77293E6C870B9 /* Pods-DBeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBeat.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBeat/Pods-DBeat.release.xcconfig"; sourceTree = "<group>"; };
 		744D2303A9F514FCA296BF92 /* libPods-DBeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBeat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26002901E31F37E0007E2F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -147,7 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				A26002921E31F3B30007E2F4 /* particleTexture.png */,
+				2BEBB2351E324EE40062D5AB /* Dangerous.mp3 */,
 				EC09A4A31E31DB3400C659FF /* Not_Afraid.mp3 */,
+				2BEBB2331E324A9D0062D5AB /* Get Low.mp3 */,
 				2BEBB2311E3227EE0062D5AB /* Animals.mp3 */,
 				EC09A4881E31D86100C659FF /* main.m */,
 			);
@@ -260,8 +266,10 @@
 				EC09A4971E31D86100C659FF /* LaunchScreen.storyboard in Resources */,
 				A26002931E31F3B30007E2F4 /* particleTexture.png in Resources */,
 				2BEBB2321E3227EE0062D5AB /* Animals.mp3 in Resources */,
+				2BEBB2361E324EE40062D5AB /* Dangerous.mp3 in Resources */,
 				EC09A4941E31D86100C659FF /* Assets.xcassets in Resources */,
 				EC09A4921E31D86100C659FF /* Main.storyboard in Resources */,
+				2BEBB2341E324A9D0062D5AB /* Get Low.mp3 in Resources */,
 				EC09A4A41E31DB3400C659FF /* Not_Afraid.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

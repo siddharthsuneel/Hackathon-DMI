@@ -76,7 +76,7 @@
     self.activeAudioPlayer = self.firstAudioPlayer;
     //[self openMediaLibraryButtonClicked];
     
-        NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"Not_Afraid" withExtension:@"mp3"];
+        NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"Get Low" withExtension:@"mp3"];
         [self.firstAudioPlayer playURL:audioFileURL
                   withVolume:1.0
                   enableRate:YES
@@ -101,7 +101,7 @@
     self.activeAudioPlayer = self.secondAudioPlayer;
     //[self openMediaLibraryButtonClicked];
     
-    NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"Animals" withExtension:@"mp3"];
+    NSURL *audioFileURL = [[NSBundle mainBundle] URLForResource:@"Dangerous" withExtension:@"mp3"];
     [self.secondAudioPlayer playURL:audioFileURL
                         withVolume:1.0
                         enableRate:YES
@@ -212,7 +212,7 @@
             scaleValue = 5;
         }
     }else {
-        scaleValue -= scaleValue * 0.3;
+        scaleValue -= scaleValue * 0.1;
         if (scaleValue < 0.4) {
             scaleValue = 0.0;
         }
@@ -231,6 +231,10 @@
     newLightState.x = @(point.x);
     newLightState.y = @(point.y);
     newLightState.on = (scaleValue <= 0.4)?[NSNumber numberWithBool:false]:[NSNumber numberWithBool:true];
+    
+    if (self.activeAudioPlayer == self.secondAudioPlayer) {
+        newLightState.transitionTime = [NSNumber numberWithInteger:0];
+    }
     
     static int count = 0;
     switch (count) {

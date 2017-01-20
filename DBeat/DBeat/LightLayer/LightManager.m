@@ -40,7 +40,7 @@
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
-    [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(loadConnectedBridgeValues) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(loadConnectedBridgeValues) userInfo:nil repeats:YES];
     [self enableLocalHeartbeat];
     [self registerPHHueSDKNotifications];
     self.accessoryBrowser = [[HMAccessoryBrowser alloc] init];
@@ -165,7 +165,7 @@
 }
 
 - (void) noLocalConnection {
-    [self showAlertPopUpWithTitle:@"" message:@"Connection with Bridge Lost."];
+    //[self showAlertPopUpWithTitle:@"" message:@"Connection with Bridge Lost."];
 }
 
 - (void) noLocalBridge {
@@ -241,7 +241,7 @@
 
 #pragma mark -Light service calls
 
-- (void) updateLightWithIdentifier:(NSString *)lightId state:(PHLightState*)lightState {
+- (void) updateLightWithIdentifier:(NSString *)lightId state:(PHLightState*)lightState {    
     [self.bridgeSendAPI updateLightStateForId:lightId withLightState:lightState completionHandler:^(NSArray *errors) {
         
         if (errors) {
@@ -249,5 +249,5 @@
         }
     }];
 }
-//modelid = LCT001;
+
 @end

@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "LightManager.h"
 
-@interface ViewController ()
+@interface ViewController () <ConnectionDelegate>
 {
     IBOutlet UISlider *mySlider;
     
@@ -22,6 +22,8 @@
 @property (strong, nonatomic) AudioPlayer *firstAudioPlayer;
 @property (strong, nonatomic) AudioPlayer *secondAudioPlayer;
 @property (strong, nonatomic) AudioPlayer *activeAudioPlayer;
+@property (strong, nonatomic) UIBarButtonItem *rightButton;
+@property (strong, nonatomic) UIBarButtonItem *leftButton;
 
 @property (strong, nonatomic) MPMediaPickerController *mediaPicker;
 @end
@@ -47,8 +49,38 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLight:) name:AudioBeatNotificationKey object:nil];
+    
+    [self setupNavigationItem];
+    [LightManager sharedManager].delegate = self;
+    [self connnectionDidUpdate];
 }
 
+- (void) setupNavigationItem {
+    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Bridge" style:UIBarButtonItemStyleDone target:self action:@selector(rightBarbuttonAction)];
+    self.navigationItem.rightBarButtonItem = _rightButton;
+    
+    self.leftButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:self action:@selector(LeftLabelAction)];
+    self.navigationItem.leftBarButtonItem = _leftButton;
+}
+
+- (void) connnectionDidUpdate {
+    
+    if ([[[LightManager sharedManager] phHueSDK] localConnected]) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.navigationItem.leftBarButtonItem.title = @"Connected";
+    }else {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.navigationItem.leftBarButtonItem.title = @"Not Connected";
+    }
+}
+
+-(void) rightBarbuttonAction {
+    [[LightManager sharedManager] searchForBridgeLocal];
+}
+
+- (void) LeftLabelAction {
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

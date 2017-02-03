@@ -9,16 +9,8 @@
 #import "LightManager.h"
 #import "UIAlertController+Blocks.h"
 
+
 @interface LightManager()<HMAccessoryBrowserDelegate,HMHomeManagerDelegate, HMHomeDelegate, HMAccessoryDelegate>
-
-@property (strong, nonatomic) NSMutableDictionary *bridgesFoundDict;
-
-@property (strong, nonatomic) PHHueSDK *phHueSDK;
-@property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
-@property (nonatomic, strong) PHBridgeResourcesCache *bridgeResourcesCache;
-@property (nonatomic, strong) PHNotificationManager *notificationManager;
-@property (nonatomic, strong) PHBridgeSendAPI *bridgeSendAPI;
-@property (nonatomic, strong) HMAccessoryBrowser *accessoryBrowser;
 
 @end
 
@@ -67,6 +59,9 @@
         
         // Enable heartbeat with interval of 10 seconds
         [self.phHueSDK enableLocalConnection];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(connnectionDidUpdate)]) {
+            [self.delegate connnectionDidUpdate];
+        }
     } else {
         // Automaticly start searching for bridges
         [self searchForBridgeLocal];
@@ -126,6 +121,9 @@
                 
                 if (self.bridgeResourcesCache.lights != nil) {
                     // TODO: load lights in dictionary....
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(connnectionDidUpdate)]) {
+                        [self.delegate connnectionDidUpdate];
+                    }
                 }
             }
         }
@@ -155,6 +153,9 @@
         [self searchForBridgeLocal];
     }else {
         NSLog(@"Available Lights: %@", self.bridgeResourcesCache.lights);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(connnectionDidUpdate)]) {
+            [self.delegate connnectionDidUpdate];
+        }
     }
 }
 
